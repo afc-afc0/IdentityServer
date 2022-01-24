@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "E+4aBPm+FRvQXb8sH3miq0L7xEnIrqFQAEnTRJ2E8AG0Wm65iW2INHp+TRiLut6bvrDSvgVliw2/inS+RqUNmA==",
+  "success": true,
+  "projectFilePath": "c:\\Users\\ahmet\\source\\repos\\IdentityServer\\ConsoleApplication\\ConsoleApplication.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ahmet\\.nuget\\packages\\identitymodel\\5.2.0\\identitymodel.5.2.0.nupkg.sha512"
+  ],
+  "logs": []
+}
