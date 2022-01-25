@@ -23,12 +23,12 @@ namespace IdentityServer
             {
                 using (var configurationDbContext = scope.ServiceProvider.GetRequiredService<ConfigurationDbContext>())
                 {
-                    configurationDbContext.Clients.Add(new Client()
-                    {
-                        ClientId = "swagger",
-                        AllowedCorsOrigins = new List<string>{"https://localhost:5003"}
-                    }.ToEntity());
-                    configurationDbContext.SaveChanges();
+                    // configurationDbContext.Clients.Add(new Client()
+                    // {
+                    //     ClientId = "swagger",
+                    //     AllowedCorsOrigins = new List<string>{"https://localhost:5003"}
+                    // }.ToEntity());
+                    // configurationDbContext.SaveChanges();
                     
 
                     // if (!configurationDbContext.Clients.Any())

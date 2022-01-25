@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
 using System;
+using IdentityServer.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace IdentityServer
 {
@@ -28,15 +30,18 @@ namespace IdentityServer
                 });
             }
 
+            services.AddControllersWithViews();
+
+            services.AddDbContext<ApplicationDbContext>(ConfigureDbContext);
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
             services.AddIdentityServer()
-                .AddConfigurationStore(options => 
-                {
-                    options.ConfigureDbContext = ConfigureDbContext;
-                })
-                .AddOperationalStore(options => 
-                {
-                    options.ConfigureDbContext = ConfigureDbContext;
-                });
+                .AddConfigurationStore(options => { options.ConfigureDbContext = ConfigureDbContext; })
+                .AddOperationalStore(options => { options.ConfigureDbContext = ConfigureDbContext; })
+                .AddAspNetIdentity<IdentityUser>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,7 +52,20 @@ namespace IdentityServer
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
+            app.UseRouting();
+
             app.UseIdentityServer();
+
+            app.UseIdentityServer();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(builder => 
+            {
+                builder.MapDefaultControllerRoute();
+            });
         }
 
         
